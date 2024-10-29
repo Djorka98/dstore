@@ -48,6 +48,11 @@ export const FloatingButtonContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   z-index: 1000;
+
+  @media (max-width: 768px) {
+    bottom: 15px;
+    right: 15px;
+  }
 `;
 
 export const FloatingButton = styled.button`

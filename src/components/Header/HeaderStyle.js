@@ -35,6 +35,16 @@ export const NavLink = styled.a`
   &.active {
     border-bottom: 2px solid white; // Example styling for active links
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem; // Aumenta el tamaño de fuente en móviles para facilitar la lectura
+    color: #fff; // Asegúrate de que el color sea claro para que contraste en el fondo
+    text-align: center; // Centra los enlaces en el menú
+
+    &.active {
+      border-bottom: 2px solid #000; // Cambia el color del borde en móviles si es necesario
+    }
+  }
 `;
 
 export const Logo = styled.a`

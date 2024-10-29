@@ -21,12 +21,29 @@ export const HeroTitle = styled(motion.h1)`
 export const HeroDesc = styled(motion.h2)`
   font-size: 48px;
   margin-top: 0;
+
+  @media (max-width: 768px) {
+    font-size: 34px;
+    margin-top: 1rem;
+  }
 `;
 
 export const HeroImage = styled(motion.img)`
   max-width: 100%;
   height: auto;
   width: 800px;
+
+  @media (max-width: 768px) {
+    width: 600px;
+  }
+
+  @media (max-width: 400px) {
+    width: 350px;
+  }
+
+  @media (max-width: 250px) {
+    width: 300px;
+  }
 `;
 
 export const HeroButton = styled(motion.button)`
@@ -49,4 +66,8 @@ export const HeroSpan = styled(motion.span)`
   color: #333;
   font-weight: 700;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;

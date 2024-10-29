@@ -1,13 +1,14 @@
-// src/components/ProductSection.js
 import React from 'react';
-import { motion } from 'framer-motion';
-import './ProductSection.css';
+import {
+  ProductSectionContainer,
+  TextContent,
+  ProductImage
+} from './ProductSectionStyle';
 
-const ProductSection = ({ title, description, imageUrl }) => {
+export const ProductSection = ({ title, description, imageUrl }) => {
   return (
-    <section className="product-section">
-      <motion.div
-        className="text-content"
+    <ProductSectionContainer>
+      <TextContent
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
@@ -15,18 +16,16 @@ const ProductSection = ({ title, description, imageUrl }) => {
       >
         <h2>{title}</h2>
         <p>{description}</p>
-      </motion.div>
-      <motion.img
+      </TextContent>
+
+      <ProductImage
         src={imageUrl}
         alt={title}
-        className="product-image"
         initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       />
-    </section>
+    </ProductSectionContainer>
   );
 };
-
-export default ProductSection;

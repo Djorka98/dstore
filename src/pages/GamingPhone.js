@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Header } from '../components/Header/Header';
-import { Footer } from '../components/Footer/Footer';
 import { ProductCarousel } from '../components/Carousel/ProductCarousel';
 import { motion } from 'framer-motion';
 import { FloatingButtonContainer, FloatingButton } from '../AppStyles';
@@ -27,18 +26,18 @@ export const GamingPhone = () => {
   const fetchSlidesAndProducts = async (lng) => {
     try {
       const slidesUrl = lng === 'en' 
-        ? 'https://run.mocky.io/v3/7d5404de-30aa-4092-9a97-9ccf581c3a5e' 
-        : 'https://run.mocky.io/v3/5635a7b1-34a5-4cb5-b73a-432924df19f9';
+        ? process.env.REACT_APP_SLIDES_URL_EN 
+        : process.env.REACT_APP_SLIDES_URL_ES;
   
       const [responseSlides] = await Promise.all([
         axios.get(slidesUrl)
       ]);
   
-      if (Array.isArray(responseSlides.data)) {
-        const validSlides = responseSlides.data.filter(slide => slide.title && slide.description && slide.imageUrl);
+      if (responseSlides.data && Array.isArray(responseSlides.data.products)) {
+        const validSlides = responseSlides.data.products.filter(product => product.title && product.description && product.imageUrl);
         setSlides(validSlides);
       } else {
-        setError('Unexpected slides data format.');
+        setError('Unexpected products data format.');
       }
   
       setLoading(false);
@@ -140,7 +139,6 @@ export const GamingPhone = () => {
           viewport={{ once: true }}
         />
       )}
-      <Footer />
     </>
   );
 };

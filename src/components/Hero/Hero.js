@@ -8,9 +8,11 @@ import {
   HeroSpan,
 } from './HeroStyle';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export const Hero = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   return (
     <HeroSection>
@@ -50,6 +52,7 @@ export const Hero = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
         viewport={{ once: true }}
+        onClick={() => navigate('/gaming_laptop')}
       >
         {t('heroButton')}
       </HeroButton>

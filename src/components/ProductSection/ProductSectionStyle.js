@@ -17,8 +17,17 @@ export const TextContent = styled(motion.div)`
 `;
 
 export const ProductImage = styled(motion.img)`
-  max-width: 50%;
-  height: auto;
-  width: 300px;
-  object-fit: contain;
+  max-width: 100%; 
+  max-height: 280px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 10px; /* Opcional: Suaviza los bordes */
+
+  @media (max-width: 768px) { /* Para móviles */
+    max-height: 200px; 
+  }
+
+  @media (max-width: 480px) { /* Para pantallas muy pequeñas */
+    max-height: 130px;
+  }
 `;

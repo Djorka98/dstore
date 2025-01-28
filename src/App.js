@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GamingLaptop } from './pages/GamingLaptop';
 import { GamingTablet } from './pages/GamingTablet';
 import { GamingPhone } from './pages/GamingPhone';
@@ -25,8 +25,6 @@ function AppContent() {
   const [error, setError] = useState(null);
   const { t, i18n } = useTranslation();
 
-  const location = useLocation();
-
   const fetchSlidesAndProducts = async (lng) => {
     try {
       const slidesUrl = lng === 'en'
@@ -41,19 +39,19 @@ function AppContent() {
         axios.get(slidesUrl),
         axios.get(productsUrl)
       ]);
-  
-      if (Array.isArray(responseSlides.data)) {
-        const validSlides = responseSlides.data.filter(slide => slide.title && slide.description && slide.imageUrl);
+
+      if (responseSlides.data && Array.isArray(responseSlides.data.products)) {
+        const validSlides = responseSlides.data.products.filter(product => product.title && product.description && product.imageUrl);
         setSlides(validSlides);
       } else {
-        setError('Unexpected slides data format.');
+        setError('Unexpected products data format.');
       }
   
-      if (Array.isArray(responseProducts.data)) {
-        const validProducts = responseProducts.data.filter(product => product.title && product.description && product.imageUrl);
+      if (responseProducts.data && Array.isArray(responseProducts.data.products)) {
+        const validProducts = responseProducts.data.products.filter(product => product.title && product.description && product.imageUrl);
         setProducts(validProducts);
       } else {
-        setError('Unexpected products data format.');
+          setError('Unexpected products data format.');
       }
   
       setLoading(false);
@@ -89,89 +87,57 @@ function AppContent() {
     i18n.changeLanguage(lng);
   };
 
-  const isLaptopPage = location.pathname === "/gaming_laptop";
-
   return (
     <>
       <GlobalStyle />
-      {!isLaptopPage && <Header />}
+      <Header />
       <Routes>
-        <Route path="/" element={<Header />} />
+        <Route path="/" element={
+          <>
+            <Hero />
+            <FloatingButtonContainer>
+              <FloatingButton onClick={() => changeLanguage('es')}>ES</FloatingButton>
+              <FloatingButton onClick={() => changeLanguage('en')}>EN</FloatingButton>
+            </FloatingButtonContainer>
+
+            <TitleProductCarousel>
+              {t('productCarouselTitle')}
+            </TitleProductCarousel>
+            
+            {loading ? (
+              <Loading />
+            ) : error ? (
+              <ErrorMessage message={error} />
+            ) : (
+              <ProductCarousel slides={slides} options={OPTIONS} />
+            )}
+
+            <TitleProductSection>
+              {t('upcomingProductsTitle')}
+            </TitleProductSection>
+
+            {products.length > 0 ? (
+              products.map((product, index) => (
+                <ProductSection
+                  key={index}
+                  title={product.title}
+                  description={product.description}
+                  imageUrl={product.imageUrl}
+                />
+              ))
+            ) : (
+              <ErrorMessage message={error} />
+            )}
+
+            <Values />
+          </>
+        } />
         <Route path="/gaming_laptop" element={<GamingLaptop />} />
         <Route path="/gaming_tablet" element={<GamingTablet />} />
         <Route path="/gaming_phone" element={<GamingPhone />} />
         <Route path="/smart_watch" element={<SmartWatch />} />
       </Routes>
-      
-      {!isLaptopPage && (
-        <>
-          <FloatingButtonContainer>
-            <FloatingButton onClick={() => changeLanguage('es')}>ES</FloatingButton>
-            <FloatingButton onClick={() => changeLanguage('en')}>EN</FloatingButton>
-          </FloatingButtonContainer>
-
-          <Hero />
-
-          <TitleProductCarousel
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            viewport={{ once: true }}
-          >
-            {t('productCarouselTitle')}
-          </TitleProductCarousel>
-
-          {loading ? (
-            <Loading 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            />
-          ) : error ? (
-            <ErrorMessage 
-              message={error}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            />
-          ) : (
-            <ProductCarousel 
-              slides={slides} options={OPTIONS} 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            />
-          )}
-
-          <TitleProductSection
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            viewport={{ once: true }}
-          >
-            {t('upcomingProductsTitle')}
-          </TitleProductSection>
-
-          {products.length > 0 ? (
-            products.map((product, index) => (
-              <ProductSection
-                key={index}
-                title={product.title}
-                description={product.description}
-                imageUrl={product.imageUrl}
-              />
-            ))
-          ) : (
-            <ErrorMessage message={error} />
-          )}
-
-          <Values />
-          <Footer />
-        </>
-      )}
+      <Footer />
     </>
   );
 }

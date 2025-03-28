@@ -1,0 +1,99 @@
+// INGLES
+{
+  "products": [
+    {
+      "title": "Wireless Earphones",
+      "description": "High-quality wireless earphones with noise cancellation and long battery life.",
+      "imageUrl": "/images/earphones.png"
+    },
+    {
+      "title": "Gaming Headset",
+      "description": "Immersive gaming headset with surround sound and noise-isolating microphone.",
+      "imageUrl": "/images/headphones.png"
+    },
+    {
+      "title": "Gaming Monitor",
+      "description": "High-refresh-rate gaming monitor with ultra-low latency for competitive gaming.",
+      "imageUrl": "/images/monitor.png"
+    },
+    {
+      "title": "Gaming Phone",
+      "description": "High-performance gaming phone with an ultra-smooth display and liquid cooling system.",
+      "imageUrl": "/images/phone_gamer.png"
+    },
+    {
+      "title": "Gaming Tablet",
+      "description": "High-performance gaming tablet with an ultra-responsive touch display and long battery life.",
+      "imageUrl": "/images/tablet_gamer.png"
+    },
+    {
+      "title": "Smartwatch",
+      "description": "Feature-packed smartwatch with fitness tracking, notifications, and a sleek design.",
+      "imageUrl": "/images/smartwatch.png"
+    }
+  ]
+}
+{
+  "products": [
+    {
+      "title": "Gaming PC",
+      "description": "Powerful gaming PC with RGB lighting and high-performance hardware for the ultimate gaming experience.",
+      "imageUrl": "/images/pc_gamer.png"
+    },
+    {
+      "title": "Smart TV",
+      "description": "4K UHD Smart TV with HDR and seamless streaming capabilities.",
+      "imageUrl": "/images/smarttv.png"
+    }
+  ]
+}
+
+// ESPAÑOL
+{
+  "products": [
+    {
+      "title": "Auriculares inalámbricos",
+      "description": "Auriculares inalámbricos de alta calidad con cancelación de ruido y larga duración de batería.",
+      "imageUrl": "/images/earphones.png"
+    },
+    {
+      "title": "Auriculares para gaming",
+      "description": "Auriculares envolventes para gaming con sonido surround y micrófono con aislamiento de ruido.",
+      "imageUrl": "/images/headphones.png"
+    },
+    {
+      "title": "Monitor para gaming",
+      "description": "Monitor de gaming con alta tasa de refresco y baja latencia para un rendimiento competitivo.",
+      "imageUrl": "/images/monitor.png"
+    },
+    {
+      "title": "Teléfono para gaming",
+      "description": "Teléfono de alto rendimiento para gaming con pantalla ultra fluida y sistema de refrigeración líquida.",
+      "imageUrl": "/images/phone_gamer.png"
+    },
+    {
+      "title": "Tablet para gaming",
+      "description": "Tablet de alto rendimiento para gaming con pantalla táctil ultra responsiva y gran duración de batería.",
+      "imageUrl": "/images/tablet_gamer.png"
+    },
+    {
+      "title": "Smartwatch",
+      "description": "Smartwatch con múltiples funciones, seguimiento de actividad física, notificaciones y diseño elegante.",
+      "imageUrl": "/images/smartwatch.png"
+    }
+  ]
+}
+{
+  "products": [
+    {
+      "title": "PC Gamer",
+      "description": "Potente PC gamer con iluminación RGB y hardware de alto rendimiento para una experiencia de juego definitiva.",
+      "imageUrl": "/images/pc_gamer.png"
+    },
+    {
+      "title": "Smart TV",
+      "description": "Smart TV 4K UHD con HDR y capacidades de streaming sin interrupciones.",
+      "imageUrl": "/images/smarttv.png"
+    }
+  ]
+}

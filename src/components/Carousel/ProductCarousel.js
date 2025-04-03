@@ -1,5 +1,4 @@
 import React from 'react';
-// import { DotButton, useDotButton } from './EmblaCarouselDotButton';
 import {
   PrevButton,
   NextButton,
@@ -11,9 +10,6 @@ import { Embla, EmblaViewport, EmblaContainer, EmblaSlide, EmblaSlideContent, Em
 export const ProductCarousel = (props) => {
   const { slides, options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
-
-  // const { selectedIndex, scrollSnaps, onDotButtonClick } =
-  //   useDotButton(emblaApi)
 
   const {
     prevBtnDisabled,

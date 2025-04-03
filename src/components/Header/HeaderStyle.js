@@ -27,22 +27,21 @@ export const NavLink = styled.a`
   color: #000;
   font-weight: bold;
 
-  // This will override the color for links inside .navbar
   ${Navbar} & {
     color: #fff;
   }
 
   &.active {
-    border-bottom: 2px solid white; // Example styling for active links
+    border-bottom: 2px solid white;
   }
 
   @media (max-width: 768px) {
-    font-size: 0.8rem; // Aumenta el tamaño de fuente en móviles para facilitar la lectura
-    color: #fff; // Asegúrate de que el color sea claro para que contraste en el fondo
-    text-align: center; // Centra los enlaces en el menú
+    font-size: 0.8rem;
+    color: #fff;
+    text-align: center;
 
     &.active {
-      border-bottom: 2px solid #000; // Cambia el color del borde en móviles si es necesario
+      border-bottom: 2px solid #000;
     }
   }
 `;

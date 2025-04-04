@@ -21,13 +21,13 @@ export const ProductImage = styled(motion.img)`
   max-height: 280px;
   width: auto;
   object-fit: cover;
-  border-radius: 10px; /* Opcional: Suaviza los bordes */
+  border-radius: 10px;
 
-  @media (max-width: 768px) { /* Para móviles */
+  @media (max-width: 768px) {
     max-height: 200px; 
   }
 
-  @media (max-width: 480px) { /* Para pantallas muy pequeñas */
+  @media (max-width: 480px) {
     max-height: 130px;
   }
 `;

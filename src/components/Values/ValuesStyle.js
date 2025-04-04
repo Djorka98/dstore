@@ -10,11 +10,11 @@ export const ValueGrid = styled.div`
   grid-template-columns: repeat(6, 1fr);
 
   @media screen and (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr); /* For tablets */
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr; /* For mobile devices */
+    grid-template-columns: 1fr;
   }
 `;
 
